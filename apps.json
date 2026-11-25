@@ -1,58 +1,58 @@
 {
   "storeName": "UY STORE",
-  "supportText": "HỖ TRỢ KỸ THUẬT & CẬP NHẬT UY STORE · ZALO: 0979773070",
+  "supportText": "HO TRO KY THUAT & CAP NHAT UY STORE · ZALO: 0979773070",
   "featured": {
     "name": "SmartTube TV",
-    "category": "Khuyên dùng",
+    "category": "Giai tri",
     "version": "24.50",
-    "downloads": "6.217 lượt tải",
-    "desc": "Xem YouTube tối ưu cho Android TV, không quảng cáo",
+    "downloads": "6.217 luot tai",
+    "desc": "Xem YouTube toi uu cho Android TV, khong quang cao",
     "icon": "📺",
     "apkUrl": "https://github.com/yuliskov/SmartTube/releases/latest"
   },
   "apps": [
     {
       "name": "SmartTube TV",
-      "category": "Giải trí",
+      "category": "Giai tri",
       "version": "24.50",
-      "downloads": "6.217 lượt tải",
-      "desc": "YouTube tối ưu cho Android TV",
+      "downloads": "6.217 luot tai",
+      "desc": "YouTube toi uu cho Android TV",
       "icon": "📺",
       "apkUrl": "https://github.com/yuliskov/SmartTube/releases/latest"
     },
     {
       "name": "FPT Play",
-      "category": "Truyền hình",
+      "category": "Truyen hinh",
       "version": "7.34.13",
-      "downloads": "4.120 lượt tải",
-      "desc": "Xem truyền hình & thể thao trực tuyến",
+      "downloads": "4.120 luot tai",
+      "desc": "Xem truyen hinh va the thao truc tuyen",
       "icon": "🟠",
       "apkUrl": ""
     },
     {
       "name": "MyTV",
-      "category": "Truyền hình",
+      "category": "Truyen hinh",
       "version": "4.67.0",
-      "downloads": "3.890 lượt tải",
-      "desc": "Kênh truyền hình & phim truyện",
+      "downloads": "3.890 luot tai",
+      "desc": "Kenh truyen hinh va phim truyen",
       "icon": "🎬",
       "apkUrl": ""
     },
     {
       "name": "TV360",
-      "category": "Truyền hình",
+      "category": "Truyen hinh",
       "version": "6.3.1",
-      "downloads": "5.430 lượt tải",
-      "desc": "Truyền hình trực tuyến cho TV",
+      "downloads": "5.430 luot tai",
+      "desc": "Truyen hinh truc tuyen cho TV",
       "icon": "📡",
       "apkUrl": ""
     },
     {
       "name": "VieON",
-      "category": "Truyền hình",
+      "category": "Truyen hinh",
       "version": "31.1.0",
-      "downloads": "4.950 lượt tải",
-      "desc": "Phim bộ & show giải trí gia đình",
+      "downloads": "4.950 luot tai",
+      "desc": "Phim bo va show giai tri gia dinh",
       "icon": "🟢",
       "apkUrl": ""
     }

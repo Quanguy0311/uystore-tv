@@ -1,0 +1,60 @@
+{
+  "storeName": "UY STORE",
+  "supportText": "HỖ TRỢ KỸ THUẬT & CẬP NHẬT UY STORE · ZALO: 0979773070",
+  "featured": {
+    "name": "SmartTube TV",
+    "category": "Khuyên dùng",
+    "version": "24.50",
+    "downloads": "6.217 lượt tải",
+    "desc": "Xem YouTube tối ưu cho Android TV, không quảng cáo",
+    "icon": "📺",
+    "apkUrl": "https://github.com/yuliskov/SmartTube/releases/latest"
+  },
+  "apps": [
+    {
+      "name": "SmartTube TV",
+      "category": "Giải trí",
+      "version": "24.50",
+      "downloads": "6.217 lượt tải",
+      "desc": "YouTube tối ưu cho Android TV",
+      "icon": "📺",
+      "apkUrl": "https://github.com/yuliskov/SmartTube/releases/latest"
+    },
+    {
+      "name": "FPT Play",
+      "category": "Truyền hình",
+      "version": "7.34.13",
+      "downloads": "4.120 lượt tải",
+      "desc": "Xem truyền hình & thể thao trực tuyến",
+      "icon": "🟠",
+      "apkUrl": ""
+    },
+    {
+      "name": "MyTV",
+      "category": "Truyền hình",
+      "version": "4.67.0",
+      "downloads": "3.890 lượt tải",
+      "desc": "Kênh truyền hình & phim truyện",
+      "icon": "🎬",
+      "apkUrl": ""
+    },
+    {
+      "name": "TV360",
+      "category": "Truyền hình",
+      "version": "6.3.1",
+      "downloads": "5.430 lượt tải",
+      "desc": "Truyền hình trực tuyến cho TV",
+      "icon": "📡",
+      "apkUrl": ""
+    },
+    {
+      "name": "VieON",
+      "category": "Truyền hình",
+      "version": "31.1.0",
+      "downloads": "4.950 lượt tải",
+      "desc": "Phim bộ & show giải trí gia đình",
+      "icon": "🟢",
+      "apkUrl": ""
+    }
+  ]
+}

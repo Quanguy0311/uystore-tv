@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UY STORE</title>
+  <style>
+    :root {
+      --bg: #0d0f17;
+      --surface: #171b28;
+      --surface-2: #22293d;
+      --accent: #7c5cff;
+      --accent-2: #ff6b35;
+      --text: #f5f7ff;
+      --muted: #9aa3bd;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
+    body {
+      background: radial-gradient(circle at 18% 10%, rgba(124, 92, 255, 0.24), transparent 45%),
+                  radial-gradient(circle at 85% 20%, rgba(255, 107, 53, 0.14), transparent 40%),
+                  var(--bg);
+      color: var(--text);
+      padding: 18px 24px 36px;
+    }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+    .brand { display: flex; align-items: center; gap: 10px; background: var(--surface); padding: 7px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.1); }
+    .badge { width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-2), var(--accent)); display: grid; place-items: center; font-weight: 800; }
+    .pills { display: flex; gap: 6px; background: rgba(255,255,255,0.06); padding: 5px; border-radius: 999px; overflow-x: auto; }
+    .pill { padding: 7px 14px; border-radius: 999px; border: none; background: transparent; color: var(--muted); font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .pill.active, .pill:focus { background: #ece7f8; color: #161324; outline: none; }
+    .search-wrap { max-width: 760px; margin: 0 auto 8px; }
+    .search-input { width: 100%; padding: 12px 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.08); color: #fff; font-size: 15px; outline: none; }
+    .search-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(124,92,255,0.28); }
+    .support { text-align: center; font-size: 12px; color: var(--muted); margin-bottom: 16px; }
+    .hero { display: flex; justify-content: space-between; align-items: center; gap: 20px; background: linear-gradient(120deg, rgba(255,255,255,0.06), rgba(124,92,255,0.14)); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 20px 24px; margin-bottom: 20px; }
+    .hero-tag { font-size: 11px; font-weight: 700; color: #ffb088; letter-spacing: 1px; margin-bottom: 4px; }
+    .hero h1 { font-size: 30px; margin-bottom: 6px; }
+    .hero p { color: var(--muted); margin-bottom: 8px; font-size: 14px; }
+    .hero-meta { font-size: 13px; color: #d3daf0; }
+    .hero-icon { width: 84px; height: 84px; border-radius: 22px; background: #1d2336; display: grid; place-items: center; font-size: 40px; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.12); }
+    .sec-title { font-size: 18px; font-weight: 700; margin: 16px 0 10px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 12px; }
+    .card { background: var(--surface); border: 2px solid transparent; border-radius: 16px; padding: 12px; cursor: pointer; transition: 0.14s ease; }
+    .card:hover, .card:focus { transform: translateY(-2px); border-color: #fff; background: var(--surface-2); outline: none; }
+    .thumb { height: 78px; border-radius: 12px; background: linear-gradient(135deg, #272f47, #181d2d); display: grid; place-items: center; font-size: 30px; margin-bottom: 8px; }
+    .name { font-weight: 700; font-size: 15px; margin-bottom: 3px; }
+    .desc { font-size: 12px; color: var(--muted); margin-bottom: 5px; line-height: 1.35; }
+    .ver { font-size: 11px; color: #a7b4d8; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand"><div class="badge">U</div><strong id="storeName">UY STORE</strong></div>
+    <div class="pills" id="catTabs">
+      <button class="pill active" data-cat="ALL">Tất cả</button>
+      <button class="pill" data-cat="Truyền hình">Truyền hình</button>
+      <button class="pill" data-cat="Giải trí">Giải trí</button>
+      <button class="pill" data-cat="Tiện ích">Tiện ích</button>
+    </div>
+  </div>
+  <div class="search-wrap"><input id="searchInput" class="search-input" placeholder="Tìm kiếm ứng dụng trên UY STORE..." /></div>
+  <div class="support" id="supportBar">HỖ TRỢ KỸ THUẬT &amp; CẬP NHẬT UY STORE · ZALO: 0979773070</div>
+
+  <section class="hero">
+    <div>
+      <div class="hero-tag">APP KHUYÊN DÙNG</div>
+      <h1 id="heroTitle">UY STORE</h1>
+      <p id="heroDesc">Kho ứng dụng chọn lọc cho Android TV</p>
+      <div class="hero-meta" id="heroMeta">Chọn ứng dụng bên dưới để xem và tải về</div>
+    </div>
+    <div class="hero-icon" id="heroIcon">📺</div>
+  </section>
+
+  <div id="sections"></div>
+
+  <script>
+    let allApps = [];
+    let currentCat = 'ALL';
+
+    function setHero(app) {
+      document.getElementById('heroTitle').textContent = app.name;
+      document.getElementById('heroDesc').textContent = app.desc || '';
+      document.getElementById('heroMeta').textContent = `Version: ${app.version || 'Mới nhất'} · ${app.downloads || 'Sẵn sàng cài đặt'}`;
+      document.getElementById('heroIcon').textContent = app.icon || '📦';
+    }
+
+    function openApp(app) {
+      if (app.apkUrl) {
+        window.location.href = app.apkUrl;
+      } else {
+        alert(`${app.name} (Version ${app.version}): Bạn hãy gắn link file .apk vào mục apkUrl trong apps.json trên GitHub.`);
+      }
+    }
+
+    function render() {
+      const q = document.getElementById('searchInput').value.trim().toLowerCase();
+      const filtered = allApps.filter(a => {
+        const matchCat = currentCat === 'ALL' || a.category === currentCat;
+        const matchQ = !q || a.name.toLowerCase().includes(q) || (a.desc || '').toLowerCase().includes(q);
+        return matchCat && matchQ;
+      });
+
+      const groups = {};
+      filtered.forEach(a => {
+        const g = a.category || 'Ứng dụng';
+        if (!groups[g]) groups[g] = [];
+        groups[g].push(a);
+      });
+
+      const container = document.getElementById('sections');
+      container.innerHTML = '';
+      Object.keys(groups).forEach(cat => {
+        const h2 = document.createElement('h2');
+        h2.className = 'sec-title';
+        h2.textContent = cat;
+        container.appendChild(h2);
+
+        const grid = document.createElement('div');
+        grid.className = 'grid';
+        groups[cat].forEach(app => {
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.tabIndex = 0;
+          card.innerHTML = `
+            <div class="thumb">${app.icon || '📦'}</div>
+            <div class="name">${app.name}</div>
+            <div class="desc">${app.desc || ''}</div>
+            <div class="ver">Version: ${app.version || '1.0'}</div>
+          `;
+          card.addEventListener('focus', () => setHero(app));
+          card.addEventListener('mouseenter', () => setHero(app));
+          card.addEventListener('click', () => openApp(app));
+          card.addEventListener('keydown', (e) => { if (e.key === 'Enter') openApp(app); });
+          grid.appendChild(card);
+        });
+        container.appendChild(grid);
+      });
+    }
+
+    document.querySelectorAll('.pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.pill').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentCat = btn.dataset.cat;
+        render();
+      });
+    });
+
+    document.getElementById('searchInput').addEventListener('input', render);
+
+    fetch('apps.json')
+      .then(r => r.json())
+      .then(data => {
+        if (data.storeName) document.getElementById('storeName').textContent = data.storeName;
+        if (data.supportText) document.getElementById('supportBar').textContent = data.supportText;
+        allApps = data.apps || [];
+        if (data.featured) setHero(data.featured);
+        else if (allApps[0]) setHero(allApps[0]);
+        render();
+      });
+  </script>
+</body>
+</html>
